@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-paideia-cream text-paideia-primary font-raleway;
+}
+
+/* Animaciones custom */
+@layer utilities {
+  .animate-fade-in {
+    @apply animate-in fade-in duration-700;
+  }
+
+  .animate-slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-700;
+  }
+}

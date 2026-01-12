@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #006497;
+    --color-primary-light: #4A85D1;
+    --color-mint: #ABD4BF;
+    --color-coral: #FFD9CF;
+    --color-cream: #F1EBDA;
+    --color-coral-accent: #FC6745;
+  }
+}
+
+@layer components {
+  .text-paideia-primary {
+    @apply text-[#006497];
+  }
+  .text-paideia-primary-light {
+    @apply text-[#4A85D1];
+  }
+  .text-paideia-mint {
+    @apply text-[#ABD4BF];
+  }
+  .text-paideia-coral {
+    @apply text-[#FFD9CF];
+  }
+  .text-paideia-cream {
+    @apply text-[#F1EBDA];
+  }
+  .text-paideia-coral-accent {
+    @apply text-[#FC6745];
+  }
+  
+  .bg-paideia-primary {
+    @apply bg-[#006497];
+  }
+  .bg-paideia-primary-light {
+    @apply bg-[#4A85D1];
+  }
+  .bg-paideia-mint {
+    @apply bg-[#ABD4BF];
+  }
+  .bg-paideia-coral {
+    @apply bg-[#FFD9CF];
+  }
+  .bg-paideia-cream {
+    @apply bg-[#F1EBDA];
+  }
+  .bg-paideia-coral-accent {
+    @apply bg-[#FC6745];
+  }
+  
+  .border-paideia-primary {
+    @apply border-[#006497];
+  }
+  .border-paideia-coral {
+    @apply border-[#FFD9CF];
+  }
+  .border-paideia-cream {
+    @apply border-[#F1EBDA];
+  }
+}
+
+@layer utilities {
+  .font-raleway {
+    @apply font-['Raleway'];
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
