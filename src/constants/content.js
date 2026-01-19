@@ -10,36 +10,37 @@ export const CONTENT = {
       id: 1,
       title: "Terapia individual",
       icon: "🧠",
-      description: "Sesiones uno a uno para trabajar tus objetivos personales y emocionales.",
+      description:
+        "Un espacio de escucha y acompañamiento pensado para vos. Trabajamos de manera personalizada desde el enfoque cognitivo-conductual.",
       howItWorks:
-        "Nos reunimos una vez por semana durante 50 minutos. El espacio es confidencial, online o presencial, y vamos definiendo objetivos y tiempos según tus necesidades.",
+        "El proceso comienza con una breve entrevista de admisión con una de las coordinadoras, donde conversamos sobre tu motivo de consulta, disponibilidad horaria y preferencias. En este primer encuentro también te explicamos en qué consiste la Terapia Cognitivo-Conductual (TCC) y cómo trabajamos. Luego, realizamos la derivación al profesional que mejor se ajuste a tus necesidades, para que puedas iniciar tu proceso terapéutico acompañado/a de la persona más adecuada para vos ☺️",
     },
     {
       id: 2,
       title: "Orientación vocacional",
       icon: "💙",
       description:
-        "Acompañamiento para elegir carrera, redireccionar tu camino profesional y tomar decisiones informadas.",
+        "Un proceso para pensar tu presente y tu futuro con mayor claridad. Te acompañamos a explorar tus intereses, habilidades y valores.",
       howItWorks:
-        "Realizamos un proceso acotado en el tiempo con entrevistas, ejercicios y devoluciones. Exploramos intereses, fortalezas y opciones concretas de estudio o trabajo.",
+        "Comenzamos con una entrevista de admisión con una de las coordinadoras, donde indagamos sobre tu momento actual, tus inquietudes vocacionales, disponibilidad horaria y preferencias. En este primer encuentro te explicamos cómo es el proceso de orientación vocacional y qué herramientas utilizamos. Luego, realizamos la derivación al profesional que mejor se adapte a tus necesidades, para acompañarte en la construcción de un proyecto alineado con tus intereses, habilidades y valores.",
     },
     {
       id: 3,
       title: "Supervisión individual",
       icon: "🤝",
       description:
-        "Espacio clínico para profesionales que quieran revisar casos y profundizar en su práctica.",
+        "Un espacio de apoyo para profesionales de la salud mental, donde reflexionamos sobre la práctica clínica desde una mirada cognitivo-conductual.",
       howItWorks:
-        "Encuentros individuales de 50 minutos para psicólogos/as. Trabajamos casos, encuadre, intervenciones y posicionamiento clínico, adaptado a tu nivel de experiencia.",
+        "El encuentro se coordina de manera individual y participan las coordinadoras de la red, quienes brindan soporte clínico al caso presentado, promoviendo el intercambio de miradas y un acompañamiento profesional enriquecedor. Siempre con un enfoque TCC.",
     },
     {
       id: 4,
-      title: "Supervisiones grupales",
+      title: "Supervisión grupal",
       icon: "✨",
       description:
-        "Grupos reducidos de intercambio clínico y reflexión guiada sobre casos y encuadre.",
+        "Un espacio de encuentro entre colegas para compartir experiencias, pensar casos en conjunto y seguir creciendo profesionalmente.",
       howItWorks:
-        "Grupos cerrados con frecuencia quincenal o mensual. Cada encuentro se organiza en torno a la presentación de casos y la discusión guiada, con bibliografía sugerida.",
+        "Se fija una fecha mensual para el encuentro, al que pueden sumarse estudiantes avanzados y profesionales psicólogos. La participación puede ser presentando un caso o asistiendo como oyente, favoreciendo el intercambio y la reflexión clínica conjunta. Los cupos son limitados para garantizar un espacio cuidado y de calidad.",
     },
   ],
   team: [
