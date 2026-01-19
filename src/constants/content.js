@@ -8,27 +8,38 @@ export const CONTENT = {
   services: [
     {
       id: 1,
-      title: "Ansiedad",
+      title: "Terapia individual",
       icon: "🧠",
-      description: "Manejo de síntomas y técnicas para encontrar calma",
+      description: "Sesiones uno a uno para trabajar tus objetivos personales y emocionales.",
+      howItWorks:
+        "Nos reunimos una vez por semana durante 50 minutos. El espacio es confidencial, online o presencial, y vamos definiendo objetivos y tiempos según tus necesidades.",
     },
     {
       id: 2,
-      title: "Depresión",
+      title: "Orientación vocacional",
       icon: "💙",
-      description: "Acompañamiento en el proceso de recuperación",
+      description:
+        "Acompañamiento para elegir carrera, redireccionar tu camino profesional y tomar decisiones informadas.",
+      howItWorks:
+        "Realizamos un proceso acotado en el tiempo con entrevistas, ejercicios y devoluciones. Exploramos intereses, fortalezas y opciones concretas de estudio o trabajo.",
     },
     {
       id: 3,
-      title: "Relaciones",
+      title: "Supervisión individual",
       icon: "🤝",
-      description: "Trabajo en comunicación y vínculos saludables",
+      description:
+        "Espacio clínico para profesionales que quieran revisar casos y profundizar en su práctica.",
+      howItWorks:
+        "Encuentros individuales de 50 minutos para psicólogos/as. Trabajamos casos, encuadre, intervenciones y posicionamiento clínico, adaptado a tu nivel de experiencia.",
     },
     {
       id: 4,
-      title: "Autoestima",
+      title: "Supervisiones grupales",
       icon: "✨",
-      description: "Fortalecimiento de la confianza en ti mismo",
+      description:
+        "Grupos reducidos de intercambio clínico y reflexión guiada sobre casos y encuadre.",
+      howItWorks:
+        "Grupos cerrados con frecuencia quincenal o mensual. Cada encuentro se organiza en torno a la presentación de casos y la discusión guiada, con bibliografía sugerida.",
     },
   ],
   team: [
