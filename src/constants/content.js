@@ -36,7 +36,7 @@ export const CONTENT = {
     {
       id: 4,
       title: "Supervisión grupal",
-      icon: "/images/services3.png",
+      icon: "/images/services4.png",
       description:
         "Un espacio de encuentro entre colegas para compartir experiencias, pensar casos en conjunto y seguir creciendo profesionalmente.",
       howItWorks:
