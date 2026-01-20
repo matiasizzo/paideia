@@ -1,33 +1,46 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Section } from "./common/Section";
 import { Button } from "./common/Button";
 import { CONTENT } from "../constants/content";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const formRef = useRef(null);
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatus("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    try {
+      await emailjs.sendForm(
+        "service_5zrened", // ← TU Service ID
+        "template_begrnpk",      // ← TU Template ID
+        formRef.current,
+        "qnha6sOiLTKZqwC0s"     // ← TU Public Key
+      );
+      setStatus("✅ ¡Gracias! Te contactaremos pronto. 😊");
+      formRef.current.reset();
+    } catch (error) {
+      setStatus("❌ Error al enviar. Intentá de nuevo.");
+      console.error("EmailJS error:", error);
+    } finally {
+      setIsSending(false);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Formulario enviado:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    setTimeout(() => setSubmitted(false), 3000);
+  const sendWhatsApp = () => {
+    const name = formRef.current?.fullName?.value || "";
+    const phone = formRef.current?.phone?.value || "";
+    const message = `Hola! Soy ${name}. 
+Edad: ${formRef.current?.age?.value || ""} años
+Motivo: ${formRef.current?.motivo?.value || ""}
+Extra: ${formRef.current?.extra?.value || ""}`;
+    
+    const whatsappUrl = `https://wa.me/5491127272113?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -44,7 +57,7 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
           {CONTENT.contact.formFields.map((field) => (
             <div key={field.name}>
               <label
@@ -59,10 +72,8 @@ export default function Contact() {
                 <textarea
                   id={field.name}
                   name={field.name}
-                  value={formData[field.name]}
-                  onChange={handleChange}
                   required={field.required}
-                  rows="5"
+                  rows="4"
                   className="w-full px-4 py-3 rounded-lg border-2 border-paideia-cream focus:border-paideia-primary focus:outline-none font-raleway transition-colors"
                   placeholder={`Tu ${field.label.toLowerCase()}...`}
                 />
@@ -71,8 +82,6 @@ export default function Contact() {
                   id={field.name}
                   type={field.type}
                   name={field.name}
-                  value={formData[field.name]}
-                  onChange={handleChange}
                   required={field.required}
                   className="w-full px-4 py-3 rounded-lg border-2 border-paideia-cream focus:border-paideia-primary focus:outline-none font-raleway transition-colors"
                   placeholder={`Tu ${field.label.toLowerCase()}...`}
@@ -81,16 +90,25 @@ export default function Contact() {
             </div>
           ))}
 
-          {/* Submit Button */}
-          <Button type="submit" size="lg" variant="primary" className="w-full">
-            Enviar mensaje
+          <Button type="submit" size="lg" variant="primary" className="w-full" disabled={isSending}>
+            {isSending ? "Enviando..." : "Enviar por Email"}
           </Button>
         </form>
 
-        {/* Success Message */}
-        {submitted && (
-          <div className="bg-paideia-mint/20 border-l-4 border-paideia-mint text-paideia-primary p-4 rounded font-raleway">
-            ✅ ¡Gracias! Tu mensaje ha sido enviado correctamente.
+        {/* WhatsApp */}
+        <div className="text-center py-6">
+          <p className="text-sm text-slate-500 mb-3 font-raleway">O escribinos directo:</p>
+          <button
+            onClick={sendWhatsApp}
+            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold font-raleway transition-colors"
+          >
+            📱 WhatsApp (+54 9 11 2727-2113)
+          </button>
+        </div>
+
+        {status && (
+          <div className="text-center font-raleway py-4 px-6 rounded-lg bg-paideia-mint/20 border-2 border-paideia-mint">
+            {status}
           </div>
         )}
       </div>
