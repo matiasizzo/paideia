@@ -10,15 +10,7 @@ export default function Services() {
   return (
     <Section id="services" bgColor="bg-white">
       <div className="space-y-12">
-        {/* Header */}
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-paideia-primary font-raleway">
-            Nuestros Servicios
-          </h2>
-          <p className="text-lg text-paideia-primary-light font-raleway font-light max-w-2xl mx-auto">
-            Ofrecemos acompañamiento profesional en diversas áreas de bienestar mental
-          </p>
-        </div>
+        {/* Header igual... */}
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -28,7 +20,12 @@ export default function Services() {
               className="bg-paideia-cream hover:bg-paideia-coral/5 flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <div className="text-5xl">{service.icon}</div>
+                {/* ← CAMBIO AQUÍ */}
+                <img
+                  src={service.icon}  // ← ahora "/images/terapia-individual.jpg"
+                  alt={service.title}
+                  className="w-16 h-16 mx-auto mb-4 object-contain rounded-lg shadow-md"
+                />
                 <h3 className="text-xl font-bold text-paideia-primary font-raleway">
                   {service.title}
                 </h3>

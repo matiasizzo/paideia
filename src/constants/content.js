@@ -9,7 +9,7 @@ export const CONTENT = {
     {
       id: 1,
       title: "Terapia individual",
-      icon: "🧠",
+      icon: "/images/services1.png",
       description:
         "Un espacio de escucha y acompañamiento pensado para vos. Trabajamos de manera personalizada desde el enfoque cognitivo-conductual.",
       howItWorks:
@@ -18,7 +18,7 @@ export const CONTENT = {
     {
       id: 2,
       title: "Orientación vocacional",
-      icon: "💙",
+      icon: "/images/services2.png",
       description:
         "Un proceso para pensar tu presente y tu futuro con mayor claridad. Te acompañamos a explorar tus intereses, habilidades y valores.",
       howItWorks:
@@ -27,7 +27,7 @@ export const CONTENT = {
     {
       id: 3,
       title: "Supervisión individual",
-      icon: "🤝",
+      icon: "/images/services3.png",
       description:
         "Un espacio de apoyo para profesionales de la salud mental, donde reflexionamos sobre la práctica clínica desde una mirada cognitivo-conductual.",
       howItWorks:
@@ -36,7 +36,7 @@ export const CONTENT = {
     {
       id: 4,
       title: "Supervisión grupal",
-      icon: "✨",
+      icon: "/images/services3.png",
       description:
         "Un espacio de encuentro entre colegas para compartir experiencias, pensar casos en conjunto y seguir creciendo profesionalmente.",
       howItWorks:
