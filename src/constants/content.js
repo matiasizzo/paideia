@@ -43,36 +43,17 @@ export const CONTENT = {
         "Se fija una fecha mensual para el encuentro, al que pueden sumarse estudiantes avanzados y profesionales psicólogos. La participación puede ser presentando un caso o asistiendo como oyente, favoreciendo el intercambio y la reflexión clínica conjunta. Los cupos son limitados para garantizar un espacio cuidado y de calidad.",
     },
   ],
-  team: [
-    {
-      id: 1,
-      name: "Dra. María López",
-      role: "Psicóloga Clínica",
-      bio: "Especializada en TCC para ansiedad y estrés postraumático",
-      image: "👩‍⚕️",
-    },
-    {
-      id: 2,
-      name: "Dr. Carlos Ramírez",
-      role: "Psicólogo Clínico",
-      bio: "Experto en TCC para depresión y orientación vocacional",
-      image: "👨‍⚕️",
-    },
-    {
-      id: 3,
-      name: "Lic. Ana García",
-      role: "Psicóloga Supervisora",
-      bio: "Formación en supervisión clínica con enfoque cognitivo-conductual",
-      image: "👩‍⚕️",
-    },
-    {
-      id: 4,
-      name: "Lic. Javier Torres",
-      role: "Psicólogo Clínico",
-      bio: "Especialista en supervisión grupal y terapia individual TCC",
-      image: "👨‍⚕️",
-    },
-  ],
+  nosotros: {
+    image: "/images/Nosotros.jpeg", 
+    title: "Nuestra historia",
+    text: `Paideia nació hace algunos años a partir de un sueño compartido entre amigas: crear un espacio de salud mental que concientizara, acompañara y acercara la terapia a quienes sentían la necesidad de empezar, pero no sabían cómo o con quién.
+
+Con el tiempo, ese sueño fue creciendo y se transformó en una red que conecta a las personas con el profesional que mejor se adapta a sus necesidades, entendiendo que cada proceso es único y merece un acompañamiento personalizado.
+
+Al mismo tiempo, Paideia surge desde la convicción de que la clínica no tiene por qué ser un camino solitario. Por eso, también ofrecemos un espacio de escucha, intercambio y acompañamiento para profesionales de la psicología, fortaleciendo el trabajo en red y el cuidado de quienes cuidan.
+
+Trabajamos desde un enfoque cognitivo-conductual, con una mirada integral de la persona, contemplando su historia, contexto, emociones y vínculos, para promover procesos de cambio reales y sostenibles.`
+  },
   contact: {
     title: "Contáctanos",
     subtitle: "Estaremos encantados de acompañarte",

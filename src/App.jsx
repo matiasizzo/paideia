@@ -1,7 +1,7 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
-import Team from "./components/Team";
+import Nosotros from "./components/Nosotros";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./index.css";
@@ -12,7 +12,7 @@ function App() {
       <Navigation />
       <Hero />
       <Services />
-      <Team />
+      <Nosotros />
       <Contact />
       <Footer />
     </div>
