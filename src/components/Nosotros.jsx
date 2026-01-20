@@ -18,7 +18,7 @@ export default function Nosotros() {  // ← Cambia nombre función
             <img
               src={CONTENT.nosotros.image}
               alt="Equipo Paideia"
-              className="w-full h-[400px] lg:h-[500px] mx-auto object-contain"
+              className="w-full h-[500px] lg:h-[600px] mx-auto object-contain"
             />
           </div>
           
