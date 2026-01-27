@@ -58,12 +58,50 @@ Trabajamos desde un enfoque cognitivo-conductual, con una mirada integral de la 
     title: "Contáctanos",
     subtitle: "Estaremos encantados de acompañarte",
     formFields: [
-      { name: "fullName", label: "Nombre y apellido", type: "text", required: true },
-      { name: "phone", label: "Número de teléfono (WhatsApp)", type: "tel", required: true },
-      { name: "email", label: "Email", type: "email", required: true },
-      { name: "age", label: "Edad", type: "number", required: true },
-      { name: "motivo", label: "¿Por qué te gustaría empezar terapia?", type: "textarea", required: true },
-      { name: "extra", label: "¿Algo más que agregar o consultar?", type: "textarea", required: false },
+      { 
+        name: "fullName", 
+        label: "Nombre y apellido", 
+        type: "text", 
+        required: true 
+      },
+      { 
+        name: "phone", 
+        label: "Número de teléfono (WhatsApp)", 
+        type: "tel", 
+        required: true 
+      },
+      { 
+        name: "email", 
+        label: "Correo electrónico", 
+        type: "email", 
+        required: true 
+      },
+      { 
+        name: "age", 
+        label: "Edad", 
+        type: "number", 
+        required: true 
+      },
+      { 
+        name: "servicio", 
+        label: "¿Qué servicio de Paideia te interesa consultar?", 
+        type: "select", 
+        required: true,
+        options: [
+          { value: "", label: "Selecciona un servicio" },
+          { value: "Terapia individual", label: "Terapia individual" },
+          { value: "Orientación vocacional", label: "Orientación vocacional" },
+          { value: "Supervisión individual", label: "Supervisión individual" },
+          { value: "Supervisión grupal", label: "Supervisión grupal" },
+        ]
+      },
+      { 
+        name: "mensaje", 
+        label: "Contanos, con tus propias palabras, qué te trae a consultar y qué estás buscando en este espacio", 
+        type: "textarea", 
+        required: true 
+      },
     ],
   },
 };
+

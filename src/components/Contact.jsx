@@ -3,43 +3,47 @@ import { Section } from "./common/Section";
 import { Button } from "./common/Button";
 import { CONTENT } from "../constants/content";
 import emailjs from "@emailjs/browser";
+emailjs.init("qnha6sOiLTKZqwC0s");
+
 
 export default function Contact() {
   const formRef = useRef(null);
   const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState("");
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
-    setIsSending(true);
-    setStatus("");
+const sendEmail = async (e) => {
+  e.preventDefault();
+  setIsSending(true);
+  setStatus("");
 
-    try {
-      await emailjs.sendForm(
-        "service_5zrened", // ← TU Service ID
-        "template_begrnpk",      // ← TU Template ID
-        formRef.current,
-        "qnha6sOiLTKZqwC0s"     // ← TU Public Key
-      );
-      setStatus("✅ ¡Gracias! Te contactaremos pronto. 😊");
-      formRef.current.reset();
-    } catch (error) {
-      setStatus("❌ Error al enviar. Intentá de nuevo.");
-      console.error("EmailJS error:", error);
-    } finally {
-      setIsSending(false);
-    }
-  };
+  try {
+    await emailjs.sendForm(
+      "service_5zrened",
+      "template_begrnpk",
+      formRef.current
+      // ← SIN el 4to parámetro porque ya inicializaste arriba
+    );
+    setStatus("✅ ¡Gracias! Te contactaremos pronto. 😊");
+    formRef.current.reset();
+  } catch (error) {
+    setStatus("❌ Error al enviar. Intentá de nuevo.");
+    console.error("EmailJS error:", error);
+  } finally {
+    setIsSending(false);
+  }
+};
 
   const sendWhatsApp = () => {
     const name = formRef.current?.fullName?.value || "";
     const phone = formRef.current?.phone?.value || "";
-    const message = `Hola! Soy ${name}. 
-Edad: ${formRef.current?.age?.value || ""} años
-Motivo: ${formRef.current?.motivo?.value || ""}
-Extra: ${formRef.current?.extra?.value || ""}`;
+    const servicio = formRef.current?.servicio?.value || "";
+    const mensaje = formRef.current?.mensaje?.value || "";
     
-    const whatsappUrl = `https://wa.me/5491127272113?text=${encodeURIComponent(message)}`;
+    const text = `Hola! Soy ${name}. 
+Servicio de interés: ${servicio}
+${mensaje}`;
+    
+    const whatsappUrl = `https://wa.me/5491127272113?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -73,10 +77,23 @@ Extra: ${formRef.current?.extra?.value || ""}`;
                   id={field.name}
                   name={field.name}
                   required={field.required}
-                  rows="4"
+                  rows="5"
                   className="w-full px-4 py-3 rounded-lg border-2 border-paideia-cream focus:border-paideia-primary focus:outline-none font-raleway transition-colors"
                   placeholder={`Tu ${field.label.toLowerCase()}...`}
                 />
+              ) : field.type === "select" ? (
+                <select
+                  id={field.name}
+                  name={field.name}
+                  required={field.required}
+                  className="w-full px-4 py-3 rounded-lg border-2 border-paideia-cream focus:border-paideia-primary focus:outline-none font-raleway transition-colors bg-white text-slate-700"
+                >
+                  {field.options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
               ) : (
                 <input
                   id={field.name}
