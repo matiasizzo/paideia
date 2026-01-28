@@ -1,34 +1,37 @@
-import { Section } from "./common/Section";
 import { CONTENT } from "../constants/content";
 
-export default function Nosotros() {  // ← Cambia nombre función
+export default function About() {
   return (
-    <Section id="nosotros" bgColor="bg-paideia-cream/20">  {/* id=team → id=nosotros */}
-      <div className="max-w-5xl mx-auto py-20">
-        {/* Header */}
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-4xl md:text-5xl font-raleway-semibold text-paideia-primary">
-            Nuestra historia
-          </h2>
-        </div>
+    <section className="py-10 sm:py-16 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-3xl mx-auto text-center lg:text-center">
+        {/* Título */}
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-paideia-primary font-raleway mb-8">
+          {CONTENT.nosotros.title}
+        </h2>
 
-        {/* Imagen + Texto */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <img
-              src={CONTENT.nosotros.image}
+        {/* Imagen */}
+        <div className="flex justify-center mb-8 lg:mb-10">
+          <div className="w-full max-w-xs lg:max-w-sm">
+            <img 
+              src={CONTENT.nosotros.image} 
               alt="Equipo Paideia"
-              className="w-full h-[500px] lg:h-[600px] mx-auto object-contain"
+              className="w-full h-auto rounded-3xl shadow-lg object-cover aspect-square"
             />
           </div>
-          
-          <div className="space-y-6 prose prose-lg max-w-none">
-            <p className="font-raleway-light text-xl text-paideia-primary-light leading-relaxed whitespace-pre-wrap">
-              {CONTENT.nosotros.text}
+        </div>
+
+        {/* Texto */}
+        <div className="space-y-4 max-w-2xl mx-auto">
+          {CONTENT.nosotros.text.split('\n\n').map((paragraph, index) => (
+            <p 
+              key={index}
+              className="text-sm sm:text-base text-paideia-primary/70 font-raleway leading-relaxed"
+            >
+              {paragraph}
             </p>
-          </div>
+          ))}
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

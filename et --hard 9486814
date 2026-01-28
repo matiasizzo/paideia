@@ -1,0 +1,26 @@
+[33m9486814[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m image logo
+[33m2311690[m Fix EmailJS initialization
+[33me9c9c47[m adjusting size3
+[33m7717156[m adjusting size2
+[33m7571b4d[m adjusting size1
+[33mfb671b8[m adjusting size
+[33me960104[m nosotros
+[33m6c6f6a5[m img4
+[33m4b94257[m fonts
+[33m167c3e4[m modal fix x
+[33meaa5e33[m modal ux
+[33m4358f24[m size images
+[33me5b8988[m modal fix
+[33m0134945[m images
+[33mc0aae03[m Fix EmailJS + update content
+[33m571ced4[m Update services with real howItWorks texts
+[33m4ba8c07[m Add service modals and howItWorks
+[33m79a5027[m Fix CSS imports for Tailwind v3
+[33mb271186[m Fix postcss config for Tailwind v3
+[33m0a23d76[m Full clean reinstall
+[33mc5a6ea8[m Remove lightningcss-win32-x64-msvc
+[33mef913cc[m Remove package-lock.json
+[33m40c0614[m Clean install with Tailwind v3
+[33m81195d3[m Downgrade Tailwind to v3 for Vercel compatibility
+[33mcf5f0ff[m Remove lightningcss
+[33ma5ccb68[m first commit
