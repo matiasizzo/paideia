@@ -17,7 +17,7 @@ export default function Navigation() {
           {/* Logo */}
 <div className="flex-shrink-0">
   <a href="#" className="flex items-center">
-    <img src="/images/paideia-navbar.png" alt="Paideia" className="h-12" />
+    <img src="/images/paideia-navbar.png" alt="Paideia" className="h-20 object-contain" />
   </a>
 </div>
 
