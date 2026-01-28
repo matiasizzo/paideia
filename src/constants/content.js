@@ -2,7 +2,7 @@ export const CONTENT = {
   hero: {
     title: "Psicoterapia online con enfoque cognitivo-conductual",
     subtitle: "Un espacio de escucha profesional para acompañarte a generar cambios reales en tu bienestar.",
-    description: "Acompañamiento profesional para tu bienestar mental",
+    description: "✔ Atención online ✔ Profesionales formados en TCC ✔ Espacio confidencial",
     cta: "Agendar consulta",
   },
   services: [
