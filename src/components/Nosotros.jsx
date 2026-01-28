@@ -2,7 +2,7 @@ import { CONTENT } from "../constants/content";
 
 export default function About() {
   return (
-    <section id="about" className="py-10 sm:py-16 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="nosotros" className="py-10 sm:py-16 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-3xl mx-auto text-center lg:text-center">
         {/* Título */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-paideia-primary font-raleway mb-8">

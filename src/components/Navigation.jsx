@@ -6,9 +6,16 @@ export default function Navigation() {
 
   const navLinks = [
     { label: "Servicios", href: "#services" },
-    { label: "Nosotros", href: "#team" },
+    { label: "Nosotros", href: "#nosotros" },
     { label: "Contacto", href: "#contact" },
   ];
+
+  const handleNavClick = (href) => {
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
@@ -21,18 +28,18 @@ export default function Navigation() {
   </a>
 </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-paideia-primary hover:text-paideia-primary-light transition-colors duration-300 font-raleway font-medium"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+{/* Desktop Menu */}
+<div className="hidden md:flex space-x-8">
+  {navLinks.map((link) => (
+    <button
+      key={link.label}
+      onClick={() => handleNavClick(link.href)}
+      className="text-paideia-primary hover:text-paideia-primary-light transition-colors duration-300 font-raleway font-medium cursor-pointer"
+    >
+      {link.label}
+    </button>
+  ))}
+</div>
 
           {/* Mobile Menu Button */}
           <button
@@ -65,21 +72,23 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="block px-3 py-2 rounded-md text-paideia-primary hover:bg-paideia-cream transition-colors duration-300 font-raleway"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
+{/* Mobile Menu */}
+{isOpen && (
+  <div className="md:hidden pb-4">
+    {navLinks.map((link) => (
+      <button
+        key={link.label}
+        onClick={() => {
+          handleNavClick(link.href);
+          setIsOpen(false);
+        }}
+        className="block w-full text-left px-3 py-2 rounded-md text-paideia-primary hover:bg-paideia-cream transition-colors duration-300 font-raleway cursor-pointer"
+      >
+        {link.label}
+      </button>
+    ))}
+  </div>
+)}
       </div>
     </nav>
   );

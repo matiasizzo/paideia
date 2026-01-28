@@ -47,7 +47,7 @@ export default function Contact() {
           {/* Título */}
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-paideia-primary font-raleway mb-2">
-              Contact
+              Contacto
             </h2>
             <p className="text-sm sm:text-base text-paideia-primary/70 font-raleway hidden lg:block">
               Estaremos encantados de acompañarte
@@ -133,7 +133,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full bg-paideia-primary hover:bg-paideia-primary/90 text-white font-raleway font-bold py-3 px-6 rounded-lg transition-colors"
                 >
-                  Enviar por Email
+                  Enviar Formulario
                 </button>
               </div>
             </form>
