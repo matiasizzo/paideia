@@ -9,6 +9,8 @@ export default function Hero() {
     }
   };
 
+  const descriptionItems = CONTENT.hero.description.split("✔").filter(item => item.trim());
+
   return (
     <section className="bg-white pt-6 pb-8 sm:py-16 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -36,9 +38,15 @@ export default function Hero() {
               {CONTENT.hero.subtitle}
             </p>
 
-            <p className="text-sm sm:text-base text-paideia-primary/70 font-raleway leading-relaxed">
-              {CONTENT.hero.description}
-            </p>
+            {/* Lista de beneficios */}
+            <div className="space-y-2">
+              {descriptionItems.map((item, index) => (
+                <div key={index} className="flex items-start gap-3 text-sm sm:text-base text-paideia-primary/70 font-raleway">
+                  <span className="text-paideia-primary font-bold mt-1">✔</span>
+                  <span>{item.trim()}</span>
+                </div>
+              ))}
+            </div>
 
             <div className="flex flex-col gap-3 pt-4">
               <button
