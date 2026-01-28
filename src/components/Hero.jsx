@@ -5,20 +5,20 @@ export default function Hero() {
   return (
     <section className="bg-gradient-to-br from-paideia-cream via-white to-paideia-coral/10 py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
       <div className="max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col md:flex-row gap-12 items-center justify-between">
           {/* Contenido */}
-          <div className="flex flex-col justify-center space-y-6">
+          <div className="flex flex-col justify-center space-y-6 flex-1">
             <div>
-              <h1 className="text-5xl md:text-6xl font-bold text-paideia-primary font-raleway leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-paideia-primary font-raleway leading-tight">
                 {CONTENT.hero.title}
               </h1>
             </div>
 
-            <p className="text-xl text-paideia-primary-light font-raleway font-light">
+            <p className="text-lg sm:text-xl text-paideia-primary-light font-raleway font-light">
               {CONTENT.hero.subtitle}
             </p>
 
-            <p className="text-lg text-paideia-primary/80 font-raleway">
+            <p className="text-base sm:text-lg text-paideia-primary/80 font-raleway">
               {CONTENT.hero.description}
             </p>
 
@@ -32,9 +32,13 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Elemento Visual */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="w-64 h-64 bg-gradient-to-br from-paideia-primary to-paideia-primary-light rounded-full opacity-20 blur-3xl"></div>
+          {/* Logo SVG */}
+          <div className="flex items-center justify-center flex-1">
+            <img 
+              src="/images/logo.png" 
+              alt="Paideia Logo" 
+              className="w-full max-w-xs h-auto object-contain"
+            />
           </div>
         </div>
       </div>
