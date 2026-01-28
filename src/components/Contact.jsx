@@ -154,8 +154,9 @@ export default function Contact() {
       </section>
 
       {/* Burbuja WhatsApp Flotante - Fija en toda la web */}
+{/* Burbuja WhatsApp Flotante - Fija en toda la web */}
       <a
-        href="https://wa.me/5491127272113"
+       href="https://wa.me/5491127272113?text=Hola%20Paideia%2C%20vengo%20desde%20la%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 w-16 h-16 lg:w-20 lg:h-20 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-40 hover:scale-110"

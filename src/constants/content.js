@@ -1,7 +1,7 @@
 export const CONTENT = {
   hero: {
-    title: "Un espacio seguro de escucha y diálogo",
-    subtitle: "Psicoterapia online con enfoque TCC",
+    title: "Psicoterapia online con enfoque cognitivo-conductual",
+    subtitle: "Un espacio de escucha profesional para acompañarte a generar cambios reales en tu bienestar.",
     description: "Acompañamiento profesional para tu bienestar mental",
     cta: "Agendar consulta",
   },
