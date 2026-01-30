@@ -91,15 +91,22 @@ export default function Contact() {
                   className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
                   placeholder="Nombre y apellido"
                 />
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
-                  placeholder="Número de teléfono/WhatsApp"
-                />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={(e) => {
+                      // permitimos solo dígitos
+                      const onlyNumbers = e.target.value.replace(/\D/g, "");
+                      setFormData((prev) => ({
+                        ...prev,
+                        phone: onlyNumbers,
+                      }));
+                    }}
+                    required
+                    className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
+                    placeholder="Número de teléfono/WhatsApp"
+                  />
               </div>
 
               {/* Email y Edad */}
@@ -113,15 +120,21 @@ export default function Contact() {
                   className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
                   placeholder="Correo electrónico"
                 />
-                <input
-                  type="number"
-                  name="age"
-                  value={formData.age}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
-                  placeholder="Edad"
-                />
+                  <input
+                    type="text"
+                    name="age"
+                    value={formData.age}
+                    onChange={(e) => {
+                      const onlyNumbers = e.target.value.replace(/\D/g, "");
+                      setFormData((prev) => ({
+                        ...prev,
+                        age: onlyNumbers,
+                      }));
+                    }}
+                    required
+                    className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
+                    placeholder="Edad"
+                  />
               </div>
 
               {/* Servicio */}
@@ -130,7 +143,10 @@ export default function Contact() {
                 value={formData.servicio}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
+                className={
+                  "w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base " +
+                  (formData.servicio === "" ? "text-paideia-primary/50" : "text-paideia-primary/80")
+                }
               >
                 <option value="">Qué servicio...</option>
                 <option value="Terapia individual">Terapia individual</option>
