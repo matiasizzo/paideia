@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CONTENT } from "../constants/content";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -23,20 +24,42 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
     
-    setTimeout(() => {
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        age: "",
-        servicio: "",
-        mensaje: "",
-      });
-      setSubmitted(false);
-    }, 3000);
+    // Inicializa EmailJS
+    emailjs.init("qnha6sOiLTKZqwC0s");
+    
+    // Envía el email
+    emailjs.send(
+      "service_5zrened",
+      "template_begrnpk",
+      {
+        to_email: "contacto@paideia.com",
+        from_name: formData.fullName,
+        from_email: formData.email,
+        phone: formData.phone,
+        age: formData.age,
+        servicio: formData.servicio,
+        mensaje: formData.mensaje,
+      }
+    ).then((response) => {
+      console.log("✅ Email enviado exitosamente:", response);
+      setSubmitted(true);
+      
+      setTimeout(() => {
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          age: "",
+          servicio: "",
+          mensaje: "",
+        });
+        setSubmitted(false);
+      }, 3000);
+    }).catch(err => {
+      console.error("❌ Error al enviar:", err);
+      alert("Error al enviar el formulario. Intenta de nuevo.");
+    });
   };
 
   return (
@@ -155,18 +178,18 @@ export default function Contact() {
 
       {/* Burbuja WhatsApp Flotante - Fija en toda la web */}
 {/* Burbuja WhatsApp Flotante - Fija en toda la web */}
-      <a
-        href="https://wa.me/5491127272113?text=Hola%20Paideia%2C%20vengo%20desde%20la%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 w-16 h-16 lg:w-20 lg:h-20 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-40 hover:scale-110"
-      >
-        <img 
-          src="/images/whatsapp-icon.png" 
-          alt="WhatsApp"
-          className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
-        />
-      </a>
+<a
+  href="https://wa.me/5491127272113?text=Hola%20Paideia%2C%20vengo%20desde%20la%20web%20y%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 flex items-center justify-center z-40 transition-all duration-300 hover:scale-110"
+>
+  <img 
+    src="/images/whatsapp-icon.png" 
+    alt="WhatsApp"
+    className="w-12 h-12 lg:w-16 lg:h-16 object-contain filter drop-shadow-lg"
+  />
+</a>
     </>
   );
 }
