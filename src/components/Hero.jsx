@@ -3,7 +3,7 @@ import { CONTENT } from "../constants/content";
 
 export default function Hero() {
   const handleContactClick = () => {
-    const contactSection = document.getElementById("contact-section");
+    const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
