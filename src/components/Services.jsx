@@ -102,10 +102,12 @@ export default function Services() {
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={() => {
-                    const contactSection = document.getElementById("contact-section");
+                    const contactSection = document.getElementById("contact");
+                    setSelectedService(null); // 1) Cierra la modal
                     if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" });
-                      setSelectedService(null);
+                      setTimeout(() => {
+                        contactSection.scrollIntoView({ behavior: "smooth" }); // 2) Luego hace scroll suave
+                      }, 200); // pequeño delay para que la modal termine de cerrarse
                     }
                   }}
                   className="flex-1 bg-paideia-primary hover:bg-paideia-primary/90 text-white font-raleway font-bold py-3 px-6 rounded-lg transition-colors"
