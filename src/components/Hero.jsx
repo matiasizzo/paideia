@@ -3,7 +3,7 @@ import { CONTENT } from "../constants/content";
 
 export default function Hero() {
   const handleContactClick = () => {
-    const contactSection = document.getElementById("contact");
+    const contactSection = document.getElementById("reserva");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
@@ -53,7 +53,7 @@ export default function Hero() {
                 onClick={handleContactClick}
                 className="w-full lg:w-auto bg-paideia-primary hover:bg-paideia-primary/90 text-white font-raleway font-bold py-3 px-8 rounded-lg transition-colors"
               >
-                Contáctanos
+                Agenda tu entrevisa
               </button>
             </div>
           </div>

@@ -102,7 +102,7 @@ export default function Services() {
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={() => {
-                    const contactSection = document.getElementById("contact");
+                    const contactSection = document.getElementById("reserva");
                     setSelectedService(null); // 1) Cierra la modal
                     if (contactSection) {
                       setTimeout(() => {
@@ -112,7 +112,7 @@ export default function Services() {
                   }}
                   className="flex-1 bg-paideia-primary hover:bg-paideia-primary/90 text-white font-raleway font-bold py-3 px-6 rounded-lg transition-colors"
                 >
-                  Contactar
+                  Agendar entrevista
                 </button>
                 <button
                   onClick={() => setSelectedService(null)}
