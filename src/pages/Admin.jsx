@@ -89,8 +89,14 @@ const turnosSemana = data
   .slice(0, 20);
 function getDiasSinContacto(ultimoContacto) {
   if (!ultimoContacto) return 9999;
-  const partes = ultimoContacto.split("/");
-  const ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
+  let ultimo;
+  if (ultimoContacto.includes("/")) {
+    const partes = ultimoContacto.split("/");
+    ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
+  } else {
+    const partes = ultimoContacto.split("-");
+    ultimo = new Date(partes[0], partes[1] - 1, partes[2]);
+  }
   const hoy = new Date();
   return Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
 }
@@ -242,12 +248,15 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
   const isEditando = editando === rowIndex;
 
 function diasSinContacto() {
-  console.log("ultimoContacto valor:", paciente.ultimoContacto);
   if (!paciente.ultimoContacto) return null;
-  const partes = paciente.ultimoContacto.split("/");
-  console.log("partes:", partes);
-  if (partes.length !== 3) return null;
-  const ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
+  let ultimo;
+  if (paciente.ultimoContacto.includes("/")) {
+    const partes = paciente.ultimoContacto.split("/");
+    ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
+  } else {
+    const partes = paciente.ultimoContacto.split("-");
+    ultimo = new Date(partes[0], partes[1] - 1, partes[2]);
+  }
   const hoy = new Date();
   const diff = Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
   return diff;
