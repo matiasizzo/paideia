@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: "1bVCZzizc6B7unfZf0rXBgwtJZZGmVq1Bm2PaeDtylI0",
-      range: "Hoja 1!A:H",
+      range: "Hoja 1!A:I",
     });
 
     const rows = response.data.values || [];
