@@ -86,9 +86,10 @@ const turnosSemana = data
   .filter((p) => !isHoy(p.turno))
   .sort((a, b) => getDiasSinContacto(b.ultimoContacto) - getDiasSinContacto(a.ultimoContacto))
   .slice(0, 20);
-  function getDiasSinContacto(ultimoContacto) {
+function getDiasSinContacto(ultimoContacto) {
   if (!ultimoContacto) return 9999;
-  const ultimo = new Date(ultimoContacto.split("/").reverse().join("-"));
+  const partes = ultimoContacto.split("/");
+  const ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
   const hoy = new Date();
   return Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
 }
@@ -239,14 +240,15 @@ const pacientesFiltrados = data
 function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, setEditForm, handleGuardar, guardando }) {
   const isEditando = editando === rowIndex;
 
-  function diasSinContacto() {
-    if (!paciente.ultimoContacto) return null;
-    const ultimo = new Date(paciente.ultimoContacto.split("/").reverse().join("-"));
-    const hoy = new Date();
-    const diff = Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
-    return diff;
-  }
-
+function diasSinContacto() {
+  if (!paciente.ultimoContacto) return null;
+  const partes = paciente.ultimoContacto.split("/");
+  if (partes.length !== 3) return null;
+  const ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
+  const hoy = new Date();
+  const diff = Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
+  return diff;
+}
   const dias = diasSinContacto();
 
   return (
