@@ -9,6 +9,7 @@ import Reserva from "./components/Reserva";
 import Footer from "./components/Footer";
 import PagoResultado from "./pages/PagoResultado";
 import ComoEmpezar from "./components/ComoEmpezar";
+import Admin from "./pages/Admin";
 import "./index.css";
 
 function HomePage() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/pago/exito" element={<PagoResultado status="success" />} />
         <Route path="/pago/error" element={<PagoResultado status="failure" />} />
         <Route path="/pago/pendiente" element={<PagoResultado status="pending" />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
