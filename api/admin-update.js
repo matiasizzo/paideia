@@ -24,14 +24,20 @@ export default async function handler(req, res) {
     // rowIndex es el índice real en la sheet (1-based, +1 por el header)
     const range = `Hoja 1!F${rowIndex + 2}:I${rowIndex + 2}`;
 
-    await sheets.spreadsheets.values.update({
-      spreadsheetId: "1bVCZzizc6B7unfZf0rXBgwtJZZGmVq1Bm2PaeDtylI0",
-      range,
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [[estado, psicologo, entrevistaCon, ultimoContacto]],
-      },
-    });
+let fechaFormateada = ultimoContacto;
+if (ultimoContacto && ultimoContacto.includes("-")) {
+  const partes = ultimoContacto.split("-");
+  fechaFormateada = partes[2] + "/" + partes[1] + "/" + partes[0];
+}
+
+await sheets.spreadsheets.values.update({
+  spreadsheetId: "1bVCZzizc6B7unfZf0rXBgwtJZZGmVq1Bm2PaeDtylI0",
+  range,
+  valueInputOption: "USER_ENTERED",
+  requestBody: {
+    values: [[estado, psicologo, entrevistaCon, fechaFormateada]],
+  },
+});
 
     return res.status(200).json({ success: true });
   } catch (error) {

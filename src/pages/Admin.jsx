@@ -305,7 +305,9 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
               estado: paciente.estado || "Pendiente",
               psicologo: paciente.psicologo || "",
               entrevistaCon: paciente.entrevistaCon || "",
-              ultimoContacto: paciente.ultimoContacto || "",
+              ultimoContacto: paciente.ultimoContacto
+                ? paciente.ultimoContacto.split("/").reverse().join("-")
+                : "",
             });
           }}
           className="text-sm text-paideia-primary font-raleway font-semibold hover:underline"
