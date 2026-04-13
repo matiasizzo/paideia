@@ -44,12 +44,12 @@ export default async function handler(req, res) {
           slot_end: slotEnd,
         },
           back_urls: {
-            success: `https://paideia-landing-mocha.vercel.app/pago/exito?nombre=${encodeURIComponent(nombre)}&email=${encodeURIComponent(email)}&fecha=${encodeURIComponent(fechaFormateada + " a las " + horaFormateada)}`,
-            failure: `https://paideia-landing-mocha.vercel.app/pago/error`,
-            pending: `https://paideia-landing-mocha.vercel.app/pago/pendiente`,
-          },
+            success: `https://www.terapiapaideia.com/pago/exito?nombre=${encodeURIComponent(nombre)}&email=${encodeURIComponent(email)}&fecha=${encodeURIComponent(fechaFormateada + " a las " + horaFormateada)}`,
+            failure: `https://www.terapiapaideia.com/pago/error`,
+            pending: `https://www.terapiapaideia.com/pago/pendiente`,
+        },
         auto_return: "approved",
-        notification_url: `https://paideia-landing-mocha.vercel.app/api/webhook`,
+        notification_url: `https://www.terapiapaideia.com/api/webhook`,
       },
     });
 

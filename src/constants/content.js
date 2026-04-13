@@ -9,38 +9,42 @@ export const CONTENT = {
     {
       id: 1,
       title: "Terapia individual",
+      subtitle: "Encontrá el terapeuta ideal para vos.",
       icon: "/images/services1.png",
-      description:
-        "Un espacio de escucha y acompañamiento pensado para vos. Trabajamos de manera personalizada desde el enfoque cognitivo-conductual.",
-      howItWorks:
-        "El proceso comienza con una breve entrevista de admisión con una de las coordinadoras, donde conversamos sobre tu motivo de consulta, disponibilidad horaria y preferencias. En este primer encuentro también te explicamos en qué consiste la Terapia Cognitivo-Conductual (TCC) y cómo trabajamos. Luego, realizamos la derivación al profesional que mejor se ajuste a tus necesidades, para que puedas iniciar tu proceso terapéutico acompañado/a de la persona más adecuada para vos ☺️",
+      description: "Un espacio de escucha y acompañamiento pensado para vos. Trabajamos de manera personalizada desde el enfoque Cognitivo-Conductual (TCC) para brindarte herramientas concretas que te ayuden a transitar tus desafíos. Nuestro compromiso es acompañarte con calidez y evidencia científica en cada paso de tu proceso.",
+      howItWorks: "El proceso comienza con una breve entrevista de admisión con una de las coordinadoras, donde conversamos sobre tu motivo de consulta, disponibilidad horaria y preferencias. En este primer encuentro también te explicamos en qué consiste la Terapia Cognitivo-Conductual (TCC) y cómo trabajamos. Luego, realizamos la derivación al profesional que mejor se ajuste a tus necesidades, para que puedas iniciar tu proceso terapéutico acompañado/a de la persona más adecuada para vos ☺️",
+      cta: "agenda",
+      ctaLabel: "Agendar y pagar admisión",
     },
     {
       id: 2,
       title: "Orientación vocacional",
+      subtitle: "Diseñá tu futuro con claridad.",
       icon: "/images/services2.png",
-      description:
-        "Un proceso para pensar tu presente y tu futuro con mayor claridad. Te acompañamos a explorar tus intereses, habilidades y valores.",
-      howItWorks:
-        "Comenzamos con una entrevista de admisión con una de las coordinadoras, donde indagamos sobre tu momento actual, tus inquietudes vocacionales, disponibilidad horaria y preferencias. En este primer encuentro te explicamos cómo es el proceso de orientación vocacional y qué herramientas utilizamos. Luego, realizamos la derivación al profesional que mejor se adapte a tus necesidades, para acompañarte en la construcción de un proyecto alineado con tus intereses, habilidades y valores.",
+      description: "Te acompañamos a explorar tus intereses, habilidades y valores para que tu elección sea un proyecto que te entusiasme. A través de un proceso dinámico y guiado, transformamos la incertidumbre en una hoja de ruta clara para que puedas tomar decisiones con seguridad y construir un camino alineado con quien sos.",
+      howItWorks: "Comenzamos con una entrevista de admisión con una de las coordinadoras, donde indagamos sobre tu momento actual, tus inquietudes vocacionales, disponibilidad horaria y preferencias. En este primer encuentro te explicamos cómo es el proceso de orientación vocacional y qué herramientas utilizamos. Luego, realizamos la derivación al profesional que mejor se adapte a tus necesidades.",
+      cta: "agenda",
+      ctaLabel: "Agendar y pagar admisión",
     },
     {
       id: 3,
       title: "Supervisión individual",
+      subtitle: "Fortalecé tu práctica profesional.",
       icon: "/images/services3.png",
-      description:
-        "Un espacio de apoyo para profesionales de la salud mental, donde reflexionamos sobre la práctica clínica desde una mirada cognitivo-conductual.",
-      howItWorks:
-        "El encuentro se coordina de manera individual y participan las coordinadoras de la red, quienes brindan soporte clínico al caso presentado, promoviendo el intercambio de miradas y un acompañamiento profesional enriquecedor. Siempre con un enfoque TCC.",
+      description: "Un espacio de apoyo para colegas donde reflexionamos juntos sobre la práctica clínica. Te brindamos soporte técnico desde la mirada TCC para destrabar casos y potenciar tus intervenciones. Es un encuentro flexible de 'par a par', pensado para que te sientas respaldado y seguro en tu rol profesional.",
+      howItWorks: "El encuentro se coordina de manera individual y participan las coordinadoras de la red, quienes brindan soporte clínico al caso presentado, promoviendo el intercambio de miradas y un acompañamiento profesional enriquecedor. Siempre con un enfoque TCC.",
+      cta: "whatsapp",
+      ctaLabel: "Consultar por WhatsApp",
     },
     {
       id: 4,
       title: "Supervisión grupal",
+      subtitle: "El valor de la mirada colectiva.",
       icon: "/images/services4.png",
-      description:
-        "Un espacio de encuentro entre colegas para compartir experiencias, pensar casos en conjunto y seguir creciendo profesionalmente.",
-      howItWorks:
-        "Se fija una fecha mensual para el encuentro, al que pueden sumarse estudiantes avanzados y profesionales psicólogos. La participación puede ser presentando un caso o asistiendo como oyente, favoreciendo el intercambio y la reflexión clínica conjunta. Los cupos son limitados para garantizar un espacio cuidado y de calidad.",
+      description: "Un encuentro mensual para compartir experiencias y seguir creciendo en comunidad. Ya sea presentando un caso o participando como oyente, favorecemos el intercambio de ideas y la reflexión clínica conjunta. Un espacio cuidado y de calidad para aprender de la mano de otros profesionales y estudiantes avanzados.",
+      howItWorks: "Se fija una fecha mensual para el encuentro, al que pueden sumarse estudiantes avanzados y profesionales psicólogos. La participación puede ser presentando un caso o asistiendo como oyente, favoreciendo el intercambio y la reflexión clínica conjunta. Los cupos son limitados para garantizar un espacio cuidado y de calidad.",
+      cta: "whatsapp",
+      ctaLabel: "Consultar disponibilidad y aranceles",
     },
   ],
   nosotros: {

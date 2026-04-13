@@ -1,30 +1,38 @@
-// api/slots.js
 import { getOccupiedSlots } from "../lib/googleCalendar.js";
 
-// Configuración: ajustar a los horarios reales de Paideia
-const WORKING_HOURS = { start: 9, end: 18 }; // 9:00 a 18:00 hs
-const SESSION_DURATION = 30; // minutos
-const WORKING_DAYS = [1, 2, 3, 4, 5]; // Lunes a Viernes
+const WORKING_HOURS = { start: 9, end: 18 };
+const SESSION_DURATION = 30;
+const WORKING_DAYS = [1, 2, 3, 4, 5];
 
-function generateAllSlots(days = 14) {
+function generateAllSlots(days = 60) {
   const slots = [];
   const now = new Date();
 
   for (let d = 1; d <= days; d++) {
-    const date = new Date(now);
-    date.setDate(now.getDate() + d);
+    // Crear fecha en horario argentino
+    const date = new Date(now.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
+    date.setDate(date.getDate() + d);
     date.setHours(0, 0, 0, 0);
+
     if (!WORKING_DAYS.includes(date.getDay())) continue;
 
     for (let h = WORKING_HOURS.start; h < WORKING_HOURS.end; h++) {
       for (let m = 0; m < 60; m += SESSION_DURATION) {
-        const start = new Date(date);
-        start.setHours(h, m, 0, 0);
-        const end = new Date(start);
-        end.setMinutes(end.getMinutes() + SESSION_DURATION);
-        slots.push({ start: start.toISOString(), end: end.toISOString() });
+        // Construir la fecha en Argentina y convertir a ISO
+        const argStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}T${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:00`;
+        
+        // Convertir hora argentina a UTC
+        const startArg = new Date(new Date(argStr).toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
+        const offsetMs = new Date(argStr) - startArg;
+        const startUTC = new Date(new Date(argStr).getTime() + offsetMs);
+        const endUTC = new Date(startUTC.getTime() + SESSION_DURATION * 60000);
+
+        slots.push({ 
+          start: startUTC.toISOString(), 
+          end: endUTC.toISOString() 
+        });
+      }
     }
-}
   }
   return slots;
 }

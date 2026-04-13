@@ -4,13 +4,14 @@ import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    age: "",
-    servicio: "",
-    mensaje: "",
-  });
+  fullName: "",
+  phone: "",
+  codigoArea: "",
+  email: "",
+  age: "",
+  servicio: "",
+  mensaje: "",
+});
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -36,7 +37,7 @@ export default function Contact() {
         to_email: "contacto@paideia.com",
         from_name: formData.fullName,
         from_email: formData.email,
-        phone: formData.phone,
+        phone: `${formData.codigoArea} ${formData.phone}`,
         age: formData.age,
         servicio: formData.servicio,
         mensaje: formData.mensaje,
@@ -91,22 +92,26 @@ export default function Contact() {
                   className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
                   placeholder="Nombre y apellido"
                 />
+                  <div className="flex gap-2">
+                  <input
+                    type="tel"
+                    name="codigoArea"
+                    value={formData.codigoArea}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, codigoArea: e.target.value.replace(/\D/g, "") }))}
+                    placeholder="Cód."
+                    maxLength={4}
+                    className="w-20 px-3 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50 text-center"
+                  />
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
-                    onChange={(e) => {
-                      // permitimos solo dígitos
-                      const onlyNumbers = e.target.value.replace(/\D/g, "");
-                      setFormData((prev) => ({
-                        ...prev,
-                        phone: onlyNumbers,
-                      }));
-                    }}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value.replace(/\D/g, "") }))}
+                    placeholder="Número de WhatsApp"
                     required
-                    className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
-                    placeholder="Número de teléfono/WhatsApp"
+                    className="flex-1 px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm lg:text-base placeholder-paideia-primary/50"
                   />
+                </div>
               </div>
 
               {/* Email y Edad */}

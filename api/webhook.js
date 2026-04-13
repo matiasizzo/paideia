@@ -1,4 +1,4 @@
-import { createAppointment } from "../lib/googleCalendar.js";
+import { createAppointment, appendToSheet } from "../lib/googleCalendar.js";
 
 export const config = {
   api: {
@@ -22,20 +22,15 @@ export default async function handler(req, res) {
 
   try {
     const rawBody = await getRawBody(req);
-console.log("Raw body completo:", rawBody);
-console.log("Longitud:", rawBody.length);
-console.log("Primer caracter:", rawBody.charCodeAt(0));
+    let body = {};
+    try {
+      body = rawBody ? JSON.parse(rawBody) : {};
+    } catch(e) {
+      const params = new URLSearchParams(rawBody);
+      body = Object.fromEntries(params);
+    }
 
-let body = {};
-try {
-  body = rawBody ? JSON.parse(rawBody) : {};
-} catch(e) {
-  console.log("Error parseando, intentando como form data:", rawBody);
-  // MP a veces manda form-urlencoded
-  const params = new URLSearchParams(rawBody);
-  body = Object.fromEntries(params);
-  console.log("Body como params:", JSON.stringify(body));
-}
+    console.log("Body recibido:", JSON.stringify(body));
 
     if (!body.type && !body.action) {
       return res.status(200).json({ received: true });
@@ -66,13 +61,24 @@ try {
       return res.status(200).json({ received: true, status: paymentData.status });
     }
 
-    const { patient_name, patient_email, slot_start, slot_end } = paymentData.metadata;
+    const { patient_name, patient_email, patient_phone, slot_start, slot_end } = paymentData.metadata;
 
     await createAppointment({
       patientName: patient_name,
       patientEmail: patient_email,
       startTime: slot_start,
       endTime: slot_end,
+    });
+
+    await appendToSheet({
+      nombre: patient_name,
+      email: patient_email,
+      telefono: patient_phone || "",
+      turno: new Date(slot_start).toLocaleString("es-AR", {
+        timeZone: "America/Argentina/Buenos_Aires",
+        weekday: "long", day: "numeric", month: "long",
+        hour: "2-digit", minute: "2-digit",
+      }),
     });
 
     console.log(`✅ Turno creado: ${patient_name}`);

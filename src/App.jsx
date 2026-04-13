@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Reserva from "./components/Reserva";
 import Footer from "./components/Footer";
 import PagoResultado from "./pages/PagoResultado";
+import ComoEmpezar from "./components/ComoEmpezar";
 import "./index.css";
 
 function HomePage() {
@@ -15,6 +16,7 @@ function HomePage() {
     <div className="min-h-screen bg-paideia-cream">
       <Navigation />
       <Hero />
+      <ComoEmpezar />
       <Services />
       <Reserva /> 
       <Nosotros />     

@@ -4,7 +4,7 @@ export default function Reserva() {
   const [slots, setSlots] = useState([]);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
   const [slotSeleccionado, setSlotSeleccionado] = useState(null);
-  const [form, setForm] = useState({ nombre: "", email: "", telefono: "" });
+  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", codigoArea: "" });
   const [loading, setLoading] = useState(false);
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [paso, setPaso] = useState(1);
@@ -66,7 +66,7 @@ export default function Reserva() {
         body: JSON.stringify({
           nombre: form.nombre,
           email: form.email,
-          telefono: form.telefono,
+          telefono: `${form.codigoArea} ${form.telefono}`,
           slotStart: slotSeleccionado.start,
           slotEnd: slotSeleccionado.end,
         }),
@@ -265,13 +265,23 @@ export default function Reserva() {
                     placeholder="Nombre y apellido"
                     className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm placeholder-paideia-primary/50"
                   />
-                  <input
-                    type="tel"
-                    value={form.telefono}
-                    onChange={(e) => setForm({ ...form, telefono: e.target.value.replace(/\D/g, "") })}
-                    placeholder="Número de WhatsApp"
-                    className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm placeholder-paideia-primary/50"
-                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="tel"
+                      value={form.codigoArea}
+                      onChange={(e) => setForm({ ...form, codigoArea: e.target.value.replace(/\D/g, "") })}
+                      placeholder="Cód. área"
+                      maxLength={4}
+                      className="w-24 px-3 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm placeholder-paideia-primary/50 text-center"
+                    />
+                    <input
+                      type="tel"
+                      value={form.telefono}
+                      onChange={(e) => setForm({ ...form, telefono: e.target.value.replace(/\D/g, "") })}
+                      placeholder="Número de WhatsApp"
+                      className="flex-1 px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm placeholder-paideia-primary/50"
+                    />
+                  </div>
                 </div>
                 <input
                   type="email"
