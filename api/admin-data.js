@@ -35,6 +35,7 @@ export default async function handler(req, res) {
       estado: row[5] || "Pendiente",
       psicologo: row[6] || "",
       entrevistaCon: row[7] || "",
+      ultimoContacto: row[8] || "",
     }));
 
     return res.status(200).json({ data });

@@ -17,19 +17,19 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { rowIndex, estado, psicologo, entrevistaCon } = req.body;
+    const { rowIndex, estado, psicologo, entrevistaCon, ultimoContacto } = req.body;
     const auth = getAuth();
     const sheets = google.sheets({ version: "v4", auth });
 
     // rowIndex es el índice real en la sheet (1-based, +1 por el header)
-    const range = `Hoja 1!F${rowIndex + 2}:H${rowIndex + 2}`;
+    const range = `Hoja 1!F${rowIndex + 2}:I${rowIndex + 2}`;
 
     await sheets.spreadsheets.values.update({
       spreadsheetId: "1bVCZzizc6B7unfZf0rXBgwtJZZGmVq1Bm2PaeDtylI0",
       range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[estado, psicologo, entrevistaCon]],
+        values: [[estado, psicologo, entrevistaCon, ultimoContacto]],
       },
     });
 

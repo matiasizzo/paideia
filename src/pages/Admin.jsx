@@ -78,12 +78,27 @@ export default function Admin() {
     timeZone: "America/Argentina/Buenos_Aires"
   });
 
-  const turnosHoy = data.filter((p) => isHoy(p.turno));
-  const turnosSemana = data.filter((p) => !isHoy(p.turno)).slice(0, 20);
-  const pacientesFiltrados = data.filter((p) =>
+  const turnosHoy = data
+  .filter((p) => isHoy(p.turno))
+  .sort((a, b) => getDiasSinContacto(b.ultimoContacto) - getDiasSinContacto(a.ultimoContacto));
+
+const turnosSemana = data
+  .filter((p) => !isHoy(p.turno))
+  .sort((a, b) => getDiasSinContacto(b.ultimoContacto) - getDiasSinContacto(a.ultimoContacto))
+  .slice(0, 20);
+  function getDiasSinContacto(ultimoContacto) {
+  if (!ultimoContacto) return 9999;
+  const ultimo = new Date(ultimoContacto.split("/").reverse().join("-"));
+  const hoy = new Date();
+  return Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
+}
+
+const pacientesFiltrados = data
+  .filter((p) =>
     p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     p.email.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  )
+  .sort((a, b) => getDiasSinContacto(b.ultimoContacto) - getDiasSinContacto(a.ultimoContacto));
 
   if (!logueado) {
     return (
@@ -224,33 +239,64 @@ export default function Admin() {
 function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, setEditForm, handleGuardar, guardando }) {
   const isEditando = editando === rowIndex;
 
+  function diasSinContacto() {
+    if (!paciente.ultimoContacto) return null;
+    const ultimo = new Date(paciente.ultimoContacto.split("/").reverse().join("-"));
+    const hoy = new Date();
+    const diff = Math.floor((hoy - ultimo) / (1000 * 60 * 60 * 24));
+    return diff;
+  }
+
+  const dias = diasSinContacto();
+
   return (
     <div className="bg-white rounded-2xl border border-paideia-cream p-5">
-      <div className="flex items-start justify-between mb-3">
+      
+      {/* Header */}
+      <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-bold text-paideia-primary font-raleway">{paciente.nombre}</h3>
-          <p className="text-sm text-paideia-primary/60 font-raleway">{paciente.turno}</p>
+          <h3 className="font-bold text-paideia-primary font-raleway text-lg">{paciente.nombre}</h3>
+          <p className="text-sm text-paideia-primary/50 font-raleway">Turno: {paciente.turno}</p>
         </div>
-        <span className={`text-xs font-raleway font-semibold px-3 py-1 rounded-full ${
-          paciente.estado === "Activo" ? "bg-green-100 text-green-700" :
-          paciente.estado === "Finalizado" ? "bg-gray-100 text-gray-600" :
-          "bg-paideia-coral/40 text-paideia-primary"
-        }`}>
-          {paciente.estado || "Pendiente"}
-        </span>
+        <div className="flex flex-col items-end gap-2">
+          <span className={`text-xs font-raleway font-semibold px-3 py-1 rounded-full ${
+            paciente.estado === "Activo" ? "bg-green-100 text-green-700" :
+            paciente.estado === "Finalizado" ? "bg-gray-100 text-gray-600" :
+            "bg-paideia-coral/40 text-paideia-primary"
+          }`}>
+            {paciente.estado || "Pendiente"}
+          </span>
+          {dias !== null && (
+            <span className={`text-xs font-raleway font-semibold px-3 py-1 rounded-full ${
+              dias > 30 ? "bg-red-100 text-red-600" :
+              dias > 14 ? "bg-yellow-100 text-yellow-700" :
+              "bg-green-100 text-green-700"
+            }`}>
+              {dias === 0 ? "Contactado hoy" : dias + " días sin contacto"}
+            </span>
+          )}
+          {dias === null && (
+            <span className="text-xs font-raleway px-3 py-1 rounded-full bg-gray-100 text-gray-500">
+              Sin contactar
+            </span>
+          )}
+        </div>
       </div>
 
-<div className="grid grid-cols-2 gap-2 text-sm font-raleway text-paideia-primary/70 mb-3">
-  <span>{"📧 " + paciente.email}</span>
+      {/* Datos */}
+      <div className="flex flex-col gap-2 text-sm font-raleway text-paideia-primary/70 mb-4">
+  <span>{"📧 Correo: " + paciente.email}</span>
   <span>
-    <a href={"https://wa.me/" + paciente.telefono.replace(/\D/g, "")} target="_blank" rel="noopener noreferrer" className="text-green-600">
-      {"💬 " + paciente.telefono}
+    <a href={"https://wa.me/+" + paciente.telefono.replace(/\D/g, "")} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700">
+      {"💬 Número: " + paciente.telefono}
     </a>
   </span>
-  <span>{paciente.psicologo ? "🧑‍⚕ " + paciente.psicologo : ""}</span>
-  <span>{paciente.entrevistaCon ? "🎙 " + paciente.entrevistaCon : ""}</span>
+  <span>{paciente.psicologo ? "Psicologo: " + paciente.psicologo : "Psicologo: Sin asignar"}</span>
+  <span>{paciente.entrevistaCon ? "Atendido por: " + paciente.entrevistaCon : "Atendido por: Sin registrar"}</span>
+  <span>{paciente.ultimoContacto ? "Ultimo contacto: " + paciente.ultimoContacto : "Ultimo contacto: Sin registrar"}</span>
 </div>
 
+      {/* Editar */}
       {!isEditando ? (
         <button
           onClick={() => {
@@ -259,15 +305,16 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
               estado: paciente.estado || "Pendiente",
               psicologo: paciente.psicologo || "",
               entrevistaCon: paciente.entrevistaCon || "",
+              ultimoContacto: paciente.ultimoContacto || "",
             });
           }}
           className="text-sm text-paideia-primary font-raleway font-semibold hover:underline"
         >
-          ✏️ Editar
+          Editar
         </button>
       ) : (
         <div className="space-y-3 pt-3 border-t border-paideia-cream">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <select
               value={editForm.estado}
               onChange={(e) => setEditForm({ ...editForm, estado: e.target.value })}
@@ -288,7 +335,13 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
               type="text"
               value={editForm.entrevistaCon}
               onChange={(e) => setEditForm({ ...editForm, entrevistaCon: e.target.value })}
-              placeholder="Entrevista con"
+              placeholder="Atendido por"
+              className="px-3 py-2 border border-paideia-cream rounded-lg font-raleway text-sm focus:outline-none focus:ring-2 focus:ring-paideia-primary"
+            />
+            <input
+              type="date"
+              value={editForm.ultimoContacto}
+              onChange={(e) => setEditForm({ ...editForm, ultimoContacto: e.target.value })}
               className="px-3 py-2 border border-paideia-cream rounded-lg font-raleway text-sm focus:outline-none focus:ring-2 focus:ring-paideia-primary"
             />
           </div>
