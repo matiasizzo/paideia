@@ -241,14 +241,14 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
       </div>
 
 <div className="grid grid-cols-2 gap-2 text-sm font-raleway text-paideia-primary/70 mb-3">
-  <span>Email: {paciente.email}</span>
+  <span>{"📧 " + paciente.email}</span>
   <span>
     <a href={"https://wa.me/" + paciente.telefono.replace(/\D/g, "")} target="_blank" rel="noopener noreferrer" className="text-green-600">
-      WhatsApp: {paciente.telefono}
+      {"💬 " + paciente.telefono}
     </a>
   </span>
-  <span>{paciente.psicologo ? "Psicologo: " + paciente.psicologo : ""}</span>
-  <span>{paciente.entrevistaCon ? "Entrevista: " + paciente.entrevistaCon : ""}</span>
+  <span>{paciente.psicologo ? "🧑‍⚕ " + paciente.psicologo : ""}</span>
+  <span>{paciente.entrevistaCon ? "🎙 " + paciente.entrevistaCon : ""}</span>
 </div>
 
       {!isEditando ? (
