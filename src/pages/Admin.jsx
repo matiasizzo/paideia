@@ -40,11 +40,12 @@ export default function Admin() {
     setLoading(false);
   }
 
-  async function recargarDatos() {
-    const res = await fetch("/api/admin-data", { headers: getHeaders() });
-    const json = await res.json();
-    setData(json.data || []);
-  }
+ async function recargarDatos() {
+  const res = await fetch("/api/admin-data", { headers: getHeaders() });
+  const json = await res.json();
+  console.log("Datos recibidos:", JSON.stringify(json.data));
+  setData(json.data || []);
+}
 
   async function handleGuardar(rowIndex) {
     setGuardando(true);
