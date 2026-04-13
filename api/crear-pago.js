@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             title: "Entrevista inicial — Paideia",
             description: `Turno: ${fechaFormateada} a las ${horaFormateada}`,
             quantity: 1,
-            unit_price: 100, // ← cambiar por el precio real en ARS
+            unit_price: 15000, // ← cambiar por el precio real en ARS
             currency_id: "ARS",
           },
         ],
