@@ -242,8 +242,10 @@ function TarjetaPaciente({ paciente, rowIndex, editando, setEditando, editForm, 
   const isEditando = editando === rowIndex;
 
 function diasSinContacto() {
+  console.log("ultimoContacto valor:", paciente.ultimoContacto);
   if (!paciente.ultimoContacto) return null;
   const partes = paciente.ultimoContacto.split("/");
+  console.log("partes:", partes);
   if (partes.length !== 3) return null;
   const ultimo = new Date(partes[2], partes[1] - 1, partes[0]);
   const hoy = new Date();
