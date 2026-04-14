@@ -16,6 +16,7 @@ export default function Admin() {
   const [editForm, setEditForm] = useState({ estado: "", psicologo: "", entrevistaCon: "" });
   const [guardando, setGuardando] = useState(false);
   const [busqueda, setBusqueda] = useState("");
+  const [filtroEstado, setFiltroEstado] = useState("todos");
 
   function getHeaders() {
     return { user: "paideia", password };
@@ -106,8 +107,8 @@ const pacientesFiltrados = data
     p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     p.email.toLowerCase().includes(busqueda.toLowerCase())
   )
+  .filter((p) => filtroEstado === "todos" || p.estado === filtroEstado)
   .sort((a, b) => getDiasSinContacto(b.ultimoContacto) - getDiasSinContacto(a.ultimoContacto));
-
   if (!logueado) {
     return (
       <div className="min-h-screen bg-paideia-cream flex items-center justify-center px-4">
@@ -221,13 +222,25 @@ const pacientesFiltrados = data
         {/* Vista TODOS */}
         {vista === "pacientes" && (
           <div>
-            <input
-              type="text"
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              placeholder="Buscar por nombre o email..."
-              className="w-full px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm mb-4"
-            />
+            <div className="flex gap-3 mb-4">
+  <input
+    type="text"
+    value={busqueda}
+    onChange={(e) => setBusqueda(e.target.value)}
+    placeholder="Buscar por nombre o email..."
+    className="flex-1 px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm"
+  />
+  <select
+    value={filtroEstado}
+    onChange={(e) => setFiltroEstado(e.target.value)}
+    className="px-4 py-3 bg-white border border-paideia-cream rounded-full focus:outline-none focus:ring-2 focus:ring-paideia-primary font-raleway text-sm"
+  >
+    <option value="todos">Todos</option>
+    <option value="Pendiente">Pendiente</option>
+    <option value="Activo">Activo</option>
+    <option value="Finalizado">Finalizado</option>
+  </select>
+</div>
             <div className="space-y-3">
               {pacientesFiltrados.map((p, i) => (
                 <TarjetaPaciente key={i} paciente={p} rowIndex={data.indexOf(p)}
