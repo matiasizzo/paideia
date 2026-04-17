@@ -12,12 +12,14 @@ export default async function handler(req, res) {
     }
 
     const startDate = new Date(slotStart);
-    const fechaFormateada = startDate.toLocaleDateString("es-AR", {
-      weekday: "long", day: "numeric", month: "long",
-    });
-    const horaFormateada = startDate.toLocaleTimeString("es-AR", {
-      hour: "2-digit", minute: "2-digit",
-    });
+const fechaFormateada = startDate.toLocaleDateString("es-AR", {
+  weekday: "long", day: "numeric", month: "long",
+  timeZone: "America/Argentina/Buenos_Aires",
+});
+const horaFormateada = startDate.toLocaleTimeString("es-AR", {
+  hour: "2-digit", minute: "2-digit",
+  timeZone: "America/Argentina/Buenos_Aires",
+});
 
     const preference = new Preference(mpClient);
     const result = await preference.create({
